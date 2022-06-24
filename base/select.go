@@ -1,3 +1,6 @@
+//select 语句用于在多个发送/接收信道操作中进行选择。select 语句会一直阻塞，直到发送/接收操作准备就绪。
+// 如果有多个信道操作准备完毕，select 会随机地选取其中之一执行。
+
 package main
 
 import (
@@ -14,12 +17,9 @@ func server2(ch chan string) {
 }
 
 func process(ch chan string) {
-	time.Sleep(10500 * time.Millisecond)
+	time.Sleep(5000 * time.Millisecond)
 	ch <- "process successful"
 }
-
-//select 语句用于在多个发送/接收信道操作中进行选择。select 语句会一直阻塞，直到发送/接收操作准备就绪。
-// 如果有多个信道操作准备完毕，select 会随机地选取其中之一执行。
 
 func main() {
 	ch := make(chan string)

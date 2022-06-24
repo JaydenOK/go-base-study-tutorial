@@ -1,3 +1,7 @@
+//解决多个协程并发，修改数据错误问题  mutex:互斥的，多个协程同时修改某个变量数据
+//解决：协程函数传入访问锁（*sync.Mutex）
+//将竟态代码放在Lock 与 Unlock之间
+
 package main
 
 import (
@@ -5,14 +9,11 @@ import (
 	"sync"
 )
 
-//解决多个协程并发，修改数据错误问题  mutex:互斥的
-////解决：协程函数传入访问锁（*sync.Mutex）
-
 var x = 0
 
 func increment(wg *sync.WaitGroup, m *sync.Mutex) {
 	m.Lock()
-	x = x + 1 //将竟态代码放在Lock 与 Unlock之间
+	x = x + 1
 	m.Unlock()
 	wg.Done()
 }

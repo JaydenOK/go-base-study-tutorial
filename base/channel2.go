@@ -4,11 +4,11 @@ import (
 	"fmt"
 )
 
-func producer(chnl chan int) {
+func producer(ch chan int) {
 	for i := 0; i < 10; i++ {
-		chnl <- i
+		ch <- i
 	}
-	close(chnl)
+	close(ch)
 }
 func main() {
 	ch := make(chan int)

@@ -1,3 +1,5 @@
+//channel 及信道或管道
+
 package main
 
 import (

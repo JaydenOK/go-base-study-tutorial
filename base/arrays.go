@@ -40,4 +40,12 @@ func main() {
 		sum += value
 	}
 
+	//数组
+	var arr1 [5]string
+	fmt.Println(arr1)
+
+	//切片
+	var arr2 []string
+	fmt.Println(arr2)
+
 }

@@ -1,3 +1,10 @@
+//WaitGroup在go语言中，用于线程同步，单从字面意思理解，wait等待的意思，group组、团队的意思，WaitGroup就是指等待一组，等待一个系列执行完成后才会继续向下执行。
+//先说说WaitGroup的用途：它能够一直等到所有的goroutine执行完成，并且阻塞主线程的执行，直到所有的goroutine执行完成。
+//WaitGroup总共有三个方法：Add(delta int),Done(),Wait()。简单的说一下这三个方法的作用。
+//Add: 添加或者减少等待goroutine的数量
+//Done: 相当于Add(-1)
+//wait: 执行阻塞，直到所有的WaitGroup数量变成0
+
 package main
 
 //工作池
@@ -31,6 +38,7 @@ func digits(number int) int {
 	time.Sleep(2 * time.Second) //模拟延迟2秒返回
 	return sum
 }
+
 func worker(wg *sync.WaitGroup) {
 	//取出job，延迟2秒返回，输入到results信道  (此处取出job，allocate 协程，取消阻塞，继续移入数据)
 	//输出信息的延迟效果主要是digits 方法 ，模拟了延迟效果

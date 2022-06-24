@@ -28,6 +28,12 @@ func stringConvertInt() {
 	//int64到string
 	str2 = strconv.FormatInt(i64, 10)
 	fmt.Println(str2)
+
+	var b int
+	fmt.Println(b)
+
+	v := 1243
+	fmt.Println(v)
 }
 
 func main() {
