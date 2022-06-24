@@ -3,7 +3,6 @@ JaydenOK
 
 
 
-``
 
 ####### gin框架安装  #######
 1，创建项目目录，切换到项目目录  
@@ -21,6 +20,10 @@ Proxy代理地址为:     https://goproxy.cn,direct
 go get -u github.com/gin-gonic/gin
 
 5，测试，创建main.go，代码如下，再执行run，打开浏览器访问： 127.0.0.1:8080/ping ,输出{"message":"pong"}，即gin框架安装成功
+
+
+
+```
 package main
 
 import "github.com/gin-gonic/gin"
@@ -34,7 +37,4 @@ func main() {
 	})
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
-
-
-
-``
+```
