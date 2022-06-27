@@ -7,8 +7,7 @@ import (
 
 //go选择排序法
 func TestSort(t *testing.T) {
-	var arr []int
-	arr2 := append(arr, 5, 4, 3, 657, 76, 34, 845, 63, 5, 5, 657, 23, 24266, 2354)
+	arr2 := []int{5, 4, 3, 657, 76, 34, 845, 63, 5, 5, 657, 23, 24266, 2354}
 	length := len(arr2)
 	//最后一个不用比较
 	for i := 0; i < length-1; i++ {
