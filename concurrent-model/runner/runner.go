@@ -1,6 +1,5 @@
 package runner
 
-//@HanFa
 import (
 	"errors"
 	"os"
@@ -22,6 +21,8 @@ type Runner struct {
 }
 
 func New(t time.Duration) *Runner {
+	//调用time.After(duration)，此函数马上返回，返回一个time.Time类型的Chan，不阻塞。
+	//后面你该做什么做什么，不影响。到了duration时间后，自动塞一个当前时间进去。
 	return &Runner{
 		interrupt: make(chan os.Signal, 1),
 		complete:  make(chan error),
