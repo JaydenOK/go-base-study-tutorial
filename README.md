@@ -48,12 +48,15 @@ cd D:\www\goweb\mall
 2，使用官方最新的module管理项目，初始化，生成go.mod文件  
 go mod init mall
 
-3，设置goland IDE环境，开启modules(设置。setting->Go->Go Modules(vgo)->Enable Go Modules[勾上]->设置代理地址)
-Proxy代理地址为:     https://goproxy.cn,direct
+3，然后修改golang IDE设置
+run -> Edit Configurations -> Working directory修改为 
+  
+4，设置goland IDE环境，开启modules(设置。setting->Go->Go Modules(vgo)->Enable Go Modules[勾上]->设置代理地址) (一定要勾选)
+然后设置Proxy代理地址为:     https://goproxy.cn,direct
 
-4，新增 main.go 文件
+5，新增 main.go 文件， 设置 package main
 
-5，新增api目录及文件，包名package命名为当前目录名（其它目录也按此规则设置包名）
+6，新增api目录及文件，包名package命名为当前目录名（其它目录也按此规则设置包名）
 mkdir D:\www\goweb\api
 touch D:\www\goweb\api\user.go
 
