@@ -9,11 +9,14 @@ import (
 //Go语言的定时器实质是单向通道，time.Timer结构体类型中有一个time.Time类型的单向chan
 
 func Test_timer(t *testing.T) {
-	Timer()
+	//Timer()
 	//Tick()
+
+	fmt.Println(uint64(time.Now().Unix()))
+
 }
 
-//1，用NewTimer , Reset 创建的定时器 （go常用）
+// 1，用NewTimer , Reset 创建的定时器 （go常用）
 func Timer() {
 	t1 := time.NewTimer(time.Second * 3) //从创建成功就开始计时了，3秒后，系统内部向只读通道 t1.C写入数据
 	defer t1.Stop()
@@ -29,7 +32,7 @@ func Timer() {
 	}
 }
 
-//2，用time.Tick创建的定时器
+// 2，用time.Tick创建的定时器
 func Tick() {
 	//time.Tick() 函数返回的是一个 channel ，每隔指定的时间就会有数据从 channel 中出来。
 	//range 其实是可以不接收遍历的值的，如果不接收，就可以简写成上面的格式。
@@ -41,7 +44,7 @@ func Tick() {
 	}
 }
 
-//返回当前日期时间
+// 返回当前日期时间
 func NowTime() string {
 	now := time.Now()
 	return fmt.Sprintf("%d-%02d-%02d %02d:%02d:%02d", now.Year(), now.Month(), now.Day(), now.Hour(), now.Minute(), now.Second())

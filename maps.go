@@ -56,6 +56,10 @@ func main() {
 	var m map[string]int
 	m["one"] = 1 // error: panic: assignment to entry in nil map
 	// m := make(map[string]int)// map 的正确声明，分配了实际的内存
+	//
+	//golang中map是引用类型，应用类型的变量未初始化时默认的zero value是nil。直接向nil map写入键值数据会导致运行时错误panic: assignment to entry in nil map
+	//
+	//因为在声明dataMap后并未初始化它，所以它的值是nil, 不指向任何内存地址。需要通过make方法分配确定的内存地址。程序修改后即可正常运行:
 
 	// slice 正确示例
 	var s []int
