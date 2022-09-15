@@ -51,10 +51,10 @@ func (t *Test) test(at IAttack) {
 func Test_multi(t *testing.T) {
 
 	tt := Test{}
-	at := HumanLowLevel{}
+	at := HumanLowLevel{name: "low", level: 1}
 	tt.test(&at) //结构体，需引用传递
 
-	at2 := HumanHighLevel{}
+	at2 := HumanHighLevel{name: "high", level: 43}
 	tt.test(&at2)
 
 	//var player IAttack //定义一个包含Attack的接口变量
