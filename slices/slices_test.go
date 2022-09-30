@@ -1,8 +1,11 @@
-package main
+package slices
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
-func main() {
+func Test_slices(t *testing.T) {
 
 	//var names []string   //定义切片
 	//var a [2]int  //定义数组
@@ -60,7 +63,7 @@ func main() {
 
 }
 
-//多维切片
+// 多维切片
 func muitiSlice() {
 	pls := [][]string{
 		{"C", "C++"},
@@ -76,8 +79,8 @@ func muitiSlice() {
 	}
 }
 
-//函数传入切片，相当于传入引用类型
-//切片持有对底层数组的引用。只要切片在内存中，数组就不能被垃圾回收
+// 函数传入切片，相当于传入引用类型
+// 切片持有对底层数组的引用。只要切片在内存中，数组就不能被垃圾回收
 func countries() []string {
 	countries := []string{"USA", "Singapore", "Germany", "India", "Australia"}
 	neededCountries := countries[:len(countries)-2] //neededCountries切片导致大数组不能回收

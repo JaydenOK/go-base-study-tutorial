@@ -47,6 +47,7 @@ func (eventManager *EventManager) Trigger(eventName string, params interface{}) 
 }
 
 func Test_interfaces(t *testing.T) {
+	//interface 是一个接口语法，而interface{}是一个类型
 	eventManager := EventManager{}
 	orderEvent := OrderEventHandler{}
 	eventManager.Bind("EventOrderAdd", &orderEvent).Trigger("EventOrderAdd", "123456")

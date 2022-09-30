@@ -1,15 +1,23 @@
-package main
+package convert
 
 import (
 	"encoding/json"
 	"fmt"
 	"reflect"
+	"testing"
 )
 
-//  json  <===>  map
-//  json  <===>  struct
+func Test_json(t *testing.T) {
+	structJson()
+	fmt.Println("####################################")
+	mapJson()
+	fmt.Println("####################################")
+	decodeToStruct()
+	fmt.Println("####################################")
+	decodeToMap()
+}
 
-//通过结构体生成json
+// 通过结构体生成json
 type Persons struct {
 	//"-"是忽略的意思          `json:"实际输出json的名称"`
 	Name    string `json:"-"`
@@ -17,7 +25,7 @@ type Persons struct {
 	Company string `json:"company"`
 }
 
-//一般用于绑定数据，mysql字段绑定,form表单绑定
+// 一般用于绑定数据，mysql字段绑定,form表单绑定
 func structJson() {
 	p := Persons{"5lmh.com", "女", "eBay"}
 	// 编码json，编码json使用json.Marshal()函数可以对一组数据进行JSON格式的编码
@@ -40,7 +48,7 @@ func structJson() {
 	fmt.Println(string(b))
 }
 
-//通过map值interface生成json  (较通用)
+// 通过map值interface生成json  (较通用)
 func mapJson() {
 	student := make(map[string]interface{})
 	student["name"] = "5lmh.com"
@@ -88,18 +96,10 @@ func decodeToMap() {
 			fmt.Println(k, "是float64类型", vv)
 		case string:
 			fmt.Println(k, "是string类型", vv)
+		case bool:
+			fmt.Println(k, "是bool类型", vv)
 		default:
 			fmt.Println("其他")
 		}
 	}
-}
-
-func main() {
-	structJson()
-	fmt.Println("####################################")
-	mapJson()
-	fmt.Println("####################################")
-	decodeToStruct()
-	fmt.Println("####################################")
-	decodeToMap()
 }

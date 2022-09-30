@@ -1,11 +1,12 @@
-package main
+package convert
 
 import (
 	"fmt"
 	"reflect"
+	"testing"
 )
 
-func main() {
+func Test_map(t *testing.T) {
 	//make(map[type of key]type of value) 是创建 map 的语法。
 	//personSalary := make(map[string]int)  //定义
 	personSalary := map[string]int{
@@ -54,8 +55,8 @@ func main() {
 
 	// map 错误示例
 	var m map[string]int
+	// m := make(map[string]int)	// map 的正确声明，分配了实际的内存
 	m["one"] = 1 // error: panic: assignment to entry in nil map
-	// m := make(map[string]int)// map 的正确声明，分配了实际的内存
 	//
 	//golang中map是引用类型，应用类型的变量未初始化时默认的zero value是nil。直接向nil map写入键值数据会导致运行时错误panic: assignment to entry in nil map
 	//
@@ -64,4 +65,53 @@ func main() {
 	// slice 正确示例
 	var s []int
 	s = append(s, 1)
+}
+
+// 多维map的声明与实现方法
+func multiMap() {
+	//方法1 初始化一个空的多维映射
+	mainMapA := map[string]map[string]string{}
+	subMapA := map[string]string{"A_Key_1": "A_SubValue_1", "A_Key_2": "A_SubValue_2"}
+	mainMapA["MapA"] = subMapA
+	fmt.Println("MultityMapA")
+	for keyA, valA := range mainMapA {
+		for subKeyA, subValA := range valA {
+			fmt.Printf("mapName=%s	Key=%s	Value=%s", keyA, subKeyA, subValA)
+		}
+	}
+
+	//方法2 使用make声明一个多维映射(等同一般声明)
+	//var mainMap map[string]map[string]string
+	mainMapB := make(map[string]map[string]string)
+	//内部容器必须再次初始化才能使用
+	subMapB := make(map[string]string)
+	subMapB["B_Key_1"] = "B_SubValue_1"
+	subMapB["B_Key_2"] = "B_SubValue_2"
+	mainMapB["MapB"] = subMapB
+	fmt.Println("MultityMapB")
+
+	for keyB, valB := range mainMapB {
+		for subKeyB, subValB := range valB {
+			fmt.Printf("mapName=%s	Key=%s	Value=%s", keyB, subKeyB, subValB)
+		}
+	}
+
+	/* 方法3 使用interface{}初始化一个一维映射
+	 * 关键点：interface{} 可以代表任意类型
+	 * 原理知识点:interface{} 就是一个空接口，所有类型都实现了这个接口，所以它可以代表所有类型
+	 */
+	//mainMapC := make(map[string]interface{})
+	mainMapC := map[string]interface{}{}
+	subMapC := make(map[string]string)
+	subMapC["C_Key_1"] = "C_SubValue_1"
+	subMapC["C_Key_2"] = "C_SubValue_2"
+	mainMapC["MapC"] = subMapC
+	fmt.Println("MultityMapC")
+	for keyC, valC := range mainMapC {
+		//此处必须实例化接口类型，即*.(map[string]string)
+		//subMap := valC.(map[string]string)
+		for subKeyC, subValC := range valC.(map[string]string) {
+			fmt.Printf("mapName=%s	Key=%s	Value=%s", keyC, subKeyC, subValC)
+		}
+	}
 }
