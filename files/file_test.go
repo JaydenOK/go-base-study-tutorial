@@ -43,7 +43,7 @@ func readFile(fileName string) ([]byte, error) {
 	return content, nil
 }
 
-// 写入文件
+// 写入文件（追加文件内容）
 func writeFile(fileName string, content string) (int, error) {
 	file, err := os.OpenFile(fileName, os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
 	if err != nil {
