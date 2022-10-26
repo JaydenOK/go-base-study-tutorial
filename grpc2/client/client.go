@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-//grpc 模拟客户端
+// grpc 模拟客户端
 func main() {
 	// 1 创建客户端连接
 	conn, err := grpc.Dial("127.0.0.1:8080", grpc.WithTransportCredentials(insecure.NewCredentials()))
@@ -28,4 +28,5 @@ func main() {
 		return
 	}
 	fmt.Println(res)
+
 }
