@@ -1,0 +1,59 @@
+//定义proto协议，定义包名。go_package 需要加上./，即生成文件的包名
+syntax = "proto3";
+package order;
+option go_package= "./pb";
+
+/******************************************************************************************
+protobuf在win10下安装：
+https://github.com/protocolbuffers/protobuf/releases
+下载win64那个，解压后把bin目录添加到path系统变量，把protoc.exe放到go path的bin目录下
+
+1，直接安装到go，$PATH的bin目录下：(推荐)
+go install github.com/golang/protobuf/proto    # protoc就是编译proto文件，生产序列化和反序列化文件
+go install google.golang.org/protobuf/cmd/protoc-gen-go
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
+2，或者安装到当前项目，go-module下
+go get github.com/golang/protobuf/proto
+go get google.golang.org/protobuf/cmd/protoc-gen-go
+go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
+安装完成后，在$GOPATH/bin下面会找到proto.exe, protoc-gen-go.exe ,protoc-gen-go-grpc.exe
+
+1，定义请求和响应的message结构格式
+2，定义服务 service
+3，使用protobuf 自动生成服务端，客户端go代码
+3.1, 使用protoc生成go代码, 生成 order.pb.go , order_grpc.pb.go 文件:
+protoc --go_out=./pb --go_opt=paths=source_relative --go-grpc_out=./pb --go-grpc_opt=paths=source_relative order.proto
+//--go_out=./pb,--go-grpc_out=./pb 即 rpc,grpc生成的go文件存放的相对目录
+
+// （新版本的方式）注意：由于需要覆盖接口中的方法：mustEmbedUnimplementedAdServiceServer ，而该方法是私有方法，
+// 所以实现的service需要和该生成的go文件放在相同包下才可以使用
+// protoc --go_out=./pb --go-grpc_out=./pb *.proto
+
+//解决办法，加require_unimplemented_servers=false:
+// protoc --go_out=./pb --go_opt=paths=source_relative --go-grpc_out=require_unimplemented_servers=false:./pb --go-grpc_opt=paths=source_relative order.proto
+
+3.2, 在服务器调用者和服务提供者的代码里分别调用生成的go包里的方法
+*****************************************************************************************/
+
+// 请求消息结构
+message OrderListRequest{
+    int32 id = 1;
+    string orderId = 2;
+    string shipName = 3;
+    string platformCode = 4;
+}
+
+//  返回格式
+message OrderList{
+    int32 id = 1;
+    string orderId = 2;
+    string shipName = 3;
+    string platformCode = 4;
+}
+
+//  远程调用的服务
+service OrderService {
+    rpc GetList(OrderListRequest) returns (OrderList){}
+}
