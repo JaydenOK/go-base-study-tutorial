@@ -10,11 +10,11 @@ import (
 
 //grpc 服务端
 
-//实现 Service接口
+// 实现 Service接口
 type OrderService struct {
 }
 
-//使用*pb.路径
+// 使用*pb.路径
 func (c *OrderService) GetList(ctx context.Context, req *pb.OrderListRequest) (*pb.OrderList, error) {
 	if req.OrderId == "" {
 		return nil, nil
@@ -40,6 +40,6 @@ func main() {
 		return
 	}
 	defer listener.Close()
-	// 4 绑定服务
+	// 4 绑定服务，启动监听
 	grpcServer.Serve(listener)
 }
