@@ -1,4 +1,4 @@
-package http
+package https
 
 import (
 	"fmt"
@@ -8,17 +8,17 @@ import (
 	"testing"
 )
 
-//Go语言中的几种单元测试使用：
-//文件名
-//*_test.go
-//函数名
-//必须以Test开头，如TestX..或Test_xxx
-//函数参数
-//必须是指向testing.T的指针：t *testing.T
+// Go语言中的几种单元测试使用：
+// 文件名
+// *_test.go
+// 函数名
+// 必须以Test开头，如TestX..或Test_xxx
+// 函数参数
+// 必须是指向testing.T的指针：t *testing.T
 //
-//go test -v
-//选项：
-//-v 表示提供冗余打印信息
+// go test -v
+// 选项：
+// -v 表示提供冗余打印信息
 func Test_get(t *testing.T) {
 	apiUrl := "http://www.sina.com"
 	// URL param map，使用键值对方式生成查询参数query
