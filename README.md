@@ -1,5 +1,39 @@
 # go-base-learn
-JaydenOK
+go常用工具类，go入门学习整理
+
+```
+1.下载golang
+golang所有版本网址
+https://studygolang.com/dl
+
+//下载并解压到/usr/local文件下
+wget https://studygolang.com/dl/golang/go1.19.1.linux-amd64.tar.gz
+//解压并复制到/user/local文件夹下
+tar -C /usr/local -zxf go1.19.1.linux-amd64.tar.gz
+
+2.编辑环境变量文件
+vim /etc/profile
+
+在文件后追加以下内容
+export GOPROXY=https://goproxy.cn
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=/root/go
+export PATH=$PATH:$GOPATH/BIN
+
+退出并保存，刷新环境变量
+source /etc/profile
+
+3.检验安装是否成功
+go version
+
+4. 环境变量信息
+ go env
+
+5. 卸载
+rm -rf /usr/local/go
+
+```
 
 
 

@@ -5,7 +5,22 @@ import (
 	"testing"
 )
 
-func Test_slices(t *testing.T) {
+func TestSlices(t *testing.T) {
+	//创建切片
+	c := []int{6, 7, 8}
+	d := []string{"aa", "bb", "ccc"}
+	res := IntegerInSlice(c, 11)
+	res2 := IntegerInSlice(c, 8)
+	fmt.Println(res)
+	fmt.Println(res2)
+
+	res3 := StringInSlice(d, "b")
+	res4 := StringInSlice(d, "bb")
+	fmt.Println(res3)
+	fmt.Println(res4)
+}
+
+func base() {
 
 	//var names []string   //定义切片
 	//var a [2]int  //定义数组
