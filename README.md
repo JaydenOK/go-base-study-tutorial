@@ -1,4 +1,4 @@
-# go-base-learn-tutorial
+# go-base-study-tutorial
 go(golang)入门教程整理，go常用工具类封装、整理  
 golang安装，模块化设置，gin框架安装  
 
