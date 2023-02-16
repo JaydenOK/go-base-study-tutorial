@@ -1,6 +1,8 @@
-# go-base-learn
-go常用工具类，go入门学习整理
+# go-base
+go(golang)入门教程整理，go常用工具类封装、整理  
+golang安装，模块化设置，gin框架安装  
 
+### Linux golang安装
 ```
 1.下载golang
 golang所有版本网址
@@ -33,47 +35,12 @@ go version
 5. 卸载
 rm -rf /usr/local/go
 
+-- (windows安装)
+Windows下可以使用.msi 后缀(如go1.19.1.windows-amd64.msi)的安装包来安装。比较简单
 ```
 
-
-
-
-####### gin框架安装  #######
-1，创建项目目录，切换到项目目录  
-
-mkdir D:\www\goweb\blog  
-cd D:\www\goweb\blog  
-  
-2，使用官方最新的module管理项目，初始化，生成go.mod文件  
-go mod init
-
-3，设置goland IDE环境，开启modules(设置。setting->Go->Go Modules(vgo)->Enable Go Modules[勾上]->设置代理地址)
-Proxy代理地址为:     https://goproxy.cn,direct
-
-4，返回项目命令行: 执行安装gin命令
-go get -u github.com/gin-gonic/gin
-
-5，测试，创建main.go，代码如下，再执行run，打开浏览器访问： 127.0.0.1:8080/ping ,输出{"message":"pong"}，即gin框架安装成功
-
-
-```
-package main
-
-import "github.com/gin-gonic/gin"
-
-func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
-}
-```
-
-
-####### 模块化规范设置项目  #######
+### 项目模块化module设置
+```text
 1，创建项目目录，切换到项目目录  
 
 mkdir D:\www\goweb\mall  
@@ -94,7 +61,6 @@ run -> Edit Configurations -> Working directory修改为
 mkdir D:\www\goweb\api
 touch D:\www\goweb\api\user.go
 
-```go
 package api
 
 import (
@@ -104,5 +70,39 @@ import (
 func UserRegister(c *gin.Context) {
 	c.JSON(200, "OK")
 }
+```
 
+
+### gin框架安装
+```text
+1, 创建项目目录，切换到项目目录  
+
+mkdir D:\www\goweb\blog  
+cd D:\www\goweb\blog  
+  
+2，使用官方最新的module管理项目，初始化，生成go.mod文件  
+go mod init
+
+3，设置goland IDE环境，开启modules(设置。setting->Go->Go Modules(vgo)->Enable Go Modules[勾上]->设置代理地址)
+Proxy代理地址为:     https://goproxy.cn,direct
+
+4，返回项目命令行: 执行安装gin命令
+go get -u github.com/gin-gonic/gin
+
+5，测试，创建main.go，代码如下，再执行run，打开浏览器访问： 127.0.0.1:8080/ping ,输出{"message":"pong"}，即gin框架安装成功
+
+
+package main
+
+import "github.com/gin-gonic/gin"
+
+func main() {
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+}
 ```
