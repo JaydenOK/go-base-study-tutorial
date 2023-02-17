@@ -8,7 +8,7 @@ import (
 
 func TestNew(t *testing.T) {
 	pool := New(2)
-	defer Stop()
+	defer pool.Stop()
 
 	if pool == nil {
 		t.Fail()
@@ -17,34 +17,34 @@ func TestNew(t *testing.T) {
 
 func TestRemoveWorker(t *testing.T) {
 	pool := New(2)
-	defer Stop()
+	defer pool.Stop()
 
 	worker := func(i int) {}
 
 	for i := 1; i <= 2; i++ {
-		if err := AddWorker(worker); err != nil {
+		if err := pool.AddWorker(worker); err != nil {
 			t.Fatal(err)
 		}
 	}
 
-	if err := RemoveWorker(worker); err != nil {
+	if err := pool.RemoveWorker(worker); err != nil {
 		t.Fatal(err)
 	}
 
-	if WorkersNum() != 1 {
+	if pool.WorkersNum() != 1 {
 		t.Fatal("should have one worker left")
 	}
 
-	if err := Delegate(1); err != nil {
+	if err := pool.Delegate(1); err != nil {
 		t.Fatal(err)
 	}
 }
 
 func TestInvalidWorker(t *testing.T) {
 	pool := New(2)
-	defer Stop()
+	defer pool.Stop()
 
-	if AddWorker("worker") == nil {
+	if pool.AddWorker("worker") == nil {
 		t.Fail()
 	}
 }
@@ -66,7 +66,7 @@ func delegateWorkToWorkers(t *testing.T, poolSize int, jobsAmount int, workersAm
 	}
 
 	for i := 1; i <= workersAmount; i++ {
-		if err := AddWorker(worker); err != nil {
+		if err := pool.AddWorker(worker); err != nil {
 			t.Fatal(err)
 		}
 	}
@@ -74,7 +74,7 @@ func delegateWorkToWorkers(t *testing.T, poolSize int, jobsAmount int, workersAm
 	wg.Add(jobsAmount)
 
 	for i := 1; i <= jobsAmount; i++ {
-		if err := Delegate(i); err != nil {
+		if err := pool.Delegate(i); err != nil {
 			t.Fatal(err)
 		}
 	}
@@ -82,7 +82,7 @@ func delegateWorkToWorkers(t *testing.T, poolSize int, jobsAmount int, workersAm
 	go func() {
 		wg.Wait()
 		close(out)
-		Stop()
+		pool.Stop()
 	}()
 
 	sum := 0
