@@ -2,7 +2,6 @@ package slices
 
 import (
 	"fmt"
-	"sort"
 	"testing"
 )
 
@@ -17,8 +16,7 @@ func TestSlice(t *testing.T) {
 	//d := []int{44, 55, 66, 77}
 	//result := Insert(a, 4,"111")
 	//slices := sort.StringSlice(a)
-	fmt.Printf("%v", a)
-	fmt.Println(sort.StringSlice(a))
+	//fmt.Printf("%v", a)
 	fmt.Println(ReverseSort(a))
 }
 

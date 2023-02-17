@@ -1,4 +1,4 @@
-module base_project
+module base
 
 go 1.15
 

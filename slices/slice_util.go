@@ -105,42 +105,27 @@ func Unique(src []string) []string {
 	return result
 }
 
-// []string => []int
-func ArrayStr2Int(data []string) []int {
-	var (
-		arr = make([]int, 0, len(data))
-	)
-	if len(data) == 0 {
+//字符串转整型
+func StringToInt(src []string) []int {
+	var arr = make([]int, 0, len(src))
+	if len(src) == 0 {
 		return arr
 	}
-	for i, _ := range data {
-		var num, _ = strconv.Atoi(data[i])
+	for i, _ := range src {
+		var num, _ = strconv.Atoi(src[i])
 		arr = append(arr, num)
 	}
 	return arr
 }
 
-// []int => []string
-func ArrayInt2Str(data []int) []string {
-	var (
-		arr = make([]string, 0, len(data))
-	)
-	if len(data) == 0 {
+//整型转字符串
+func IntToString(src []int) []string {
+	var arr = make([]string, 0, len(src))
+	if len(src) == 0 {
 		return arr
 	}
-	for i, _ := range data {
-		arr = append(arr, strconv.Itoa(data[i]))
+	for i, _ := range src {
+		arr = append(arr, strconv.Itoa(src[i]))
 	}
 	return arr
-}
-
-// 移除存在于切片的字符串
-func Remove(slice []string, item string) bool {
-	_ = make([]string, len(slice))
-	for _, value := range slice {
-		if value == item {
-			return true
-		}
-	}
-	return false
 }
