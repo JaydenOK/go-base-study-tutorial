@@ -1,7 +1,5 @@
 package slices
 
-//切片常用函数
-
 import (
 	"sort"
 	"strconv"

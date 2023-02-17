@@ -1,4 +1,4 @@
-package convert
+package maps
 
 import (
 	"fmt"
@@ -6,7 +6,22 @@ import (
 	"testing"
 )
 
-func Test_map(t *testing.T) {
+func TestMap(t *testing.T) {
+	m1 := map[string]string{"a": "11", "b": "22", "c": "33", "d": "666"}
+	//m2 := map[string]string{"aa": "11", "bb": "22", "cc": "333", "a": "asadfaf"}
+	//result := Merge(m1, m2)
+	delete(m1, "aaa")
+	fmt.Println(m1)
+	//fmt.Println(result)
+}
+
+func demo() {
+	//Map 是一种无序的键值对的集合。
+	//Map 最重要的一点是通过 key 来快速检索数据，key 类似于索引，指向数据的值。
+	//Map 是一种集合，所以我们可以像迭代数组和切片那样迭代它。不过，Map 是无序的，遍历 Map 时返回的键值对的顺序是不确定的。
+	//在获取 Map 的值时，如果键不存在，返回该类型的零值，例如 int 类型的零值是 0，string 类型的零值是 ""。
+	//Map 是引用类型，如果将一个 Map 传递给一个函数或赋值给另一个变量，它们都指向同一个底层数据结构，因此对 Map 的修改会影响到所有引用它的变量
+
 	//make(map[type of key]type of value) 是创建 map 的语法。
 	//personSalary := make(map[string]int)  //定义
 	personSalary := map[string]int{
@@ -24,10 +39,6 @@ func Test_map(t *testing.T) {
 	}
 
 	//检查 key 是否存在可以用 map 直接访问，检查返回的第二个参数即可。
-	//x := map[string]string{"one": "2", "two": "", "three": "3"}
-	//if v := x["two"]; v == "" {
-	//	fmt.Println("key two is no entry") // 键 two 存不存在都会返回的空字符串
-	//}
 
 	// for range 循环，当使用 for range 遍历 map 时，不保证每次执行程序获取的元素顺序相同。
 	personSalary2 := map[string]int{
@@ -114,4 +125,5 @@ func multiMap() {
 			fmt.Printf("mapName=%s	Key=%s	Value=%s", keyC, subKeyC, subValC)
 		}
 	}
+
 }

@@ -5,8 +5,6 @@ import (
 	"testing"
 )
 
-type vvv []interface{}
-
 func TestSlice(t *testing.T) {
 	//创建切片
 	//c := []int{6, 7, 8}
