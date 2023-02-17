@@ -1,4 +1,4 @@
-package workerpool
+package workerpool2
 //
 //import (
 //	"base/deque"
