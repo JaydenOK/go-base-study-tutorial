@@ -2,8 +2,11 @@ package slices
 
 import (
 	"fmt"
+	"sort"
 	"testing"
 )
+
+type vvv []interface{}
 
 func TestSlice(t *testing.T) {
 	//创建切片
@@ -13,7 +16,10 @@ func TestSlice(t *testing.T) {
 	//c := []int{11, 22, 33}
 	//d := []int{44, 55, 66, 77}
 	//result := Insert(a, 4,"111")
-	fmt.Println(Unique(a))
+	//slices := sort.StringSlice(a)
+	fmt.Printf("%v", a)
+	fmt.Println(sort.StringSlice(a))
+	fmt.Println(ReverseSort(a))
 }
 
 func base() {
