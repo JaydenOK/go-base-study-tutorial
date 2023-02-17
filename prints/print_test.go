@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestSlice(t *testing.T) {
+func TestPrint(t *testing.T) {
 	type a struct {
 		name string
 		age  int

@@ -1,7 +1,9 @@
-package a
+package structs
 
 import (
+	"base_project/structs/computer"
 	"fmt"
+	"testing"
 )
 
 //结构体的声明
@@ -73,7 +75,7 @@ type Person2 struct {
 //当一个函数有一个值参数，它只能接受一个值参数。
 //当一个方法有一个值接收器，它可以接受值接收器和指针接收器
 
-func main() {
+func TestStruct(t *testing.T) {
 	emp6 := Employee{"Sam", "Anderson", 55, 6000}
 	fmt.Println("First Name:", emp6.firstName)
 	fmt.Println("Last Name:", emp6.lastName)
@@ -105,4 +107,12 @@ func main() {
 	//	fmt.Println("image1 and image2 are equal")
 	//}
 
+}
+
+func TestStruct2(t *testing.T) {
+	var spec computer.Spec
+	spec.Maker = "apple"
+	spec.Price = 50000
+	//spec.model = "Mac Mini"
+	fmt.Println("Spec:", spec)
 }

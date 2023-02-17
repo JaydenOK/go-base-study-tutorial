@@ -1,4 +1,4 @@
-package a
+package structs
 
 import (
 	"errors"

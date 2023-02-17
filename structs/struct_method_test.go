@@ -1,7 +1,8 @@
-package a
+package structs
 
 import (
 	"fmt"
+	"testing"
 )
 
 type Employee2 struct {
@@ -23,7 +24,7 @@ func (e *Employee2) changeAge(newAge int) {
 	e.age = newAge
 }
 
-func main() {
+func TestMethod(t *testing.T) {
 	e := Employee2{
 		name: "Mark Andrew",
 		age:  50,

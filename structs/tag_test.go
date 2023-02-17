@@ -1,8 +1,9 @@
-package main
+package structs
 
 import (
 	"encoding/json"
 	"fmt"
+	"testing"
 )
 
 //结构体标签（Tag）
@@ -22,7 +23,7 @@ type Student struct {
 	name   string //私有不能被json包访问
 }
 
-func main() {
+func TestTag(t *testing.T) {
 	s1 := Student{
 		ID:     1,
 		Gender: "男",
