@@ -7,12 +7,15 @@ import (
 )
 
 func TestMap(t *testing.T) {
-	m1 := map[string]string{"a": "11", "b": "22", "c": "33", "d": "666"}
+	//m1 := map[string]string{"a": "11", "b": "22", "c": "33", "d": "666", "1": "666"}
 	//m2 := map[string]string{"aa": "11", "bb": "22", "cc": "333", "a": "asadfaf"}
-	//result := Merge(m1, m2)
-	delete(m1, "aaa")
-	fmt.Println(m1)
-	//fmt.Println(result)
+	//s := JsonEncode(m1)
+	//prints.PrintVar(s)
+	//
+	//m2 := JsonDecode(s)
+	//prints.PrintVar(m2)
+
+
 }
 
 func demo() {

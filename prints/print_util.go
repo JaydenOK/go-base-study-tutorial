@@ -3,7 +3,7 @@ package prints
 import "fmt"
 
 func PrintVar(v interface{}) {
-	fmt.Printf("#############\n")
+	fmt.Printf("######\n")
 	fmt.Printf("type:%T;\nvalue:%v;\n+value:%+v;\n", v, v, v)
 }
 
