@@ -1,9 +1,8 @@
 package go_workerpool
 
 import (
+	"base/go_workerpool/workpool"
 	"fmt"
-
-	"github.com/xxjwxc/gowp/workpool"
 )
 
 func tets() {

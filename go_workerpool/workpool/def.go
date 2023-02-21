@@ -1,10 +1,9 @@
 package workpool
 
 import (
+	"base/go_workerpool/myqueue"
 	"sync"
 	"time"
-
-	"github.com/xxjwxc/public/myqueue"
 )
 
 // TaskHandler Define function callbacks

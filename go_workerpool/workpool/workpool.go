@@ -1,12 +1,11 @@
 package workpool
 
 import (
+	"base/go_workerpool/myqueue"
 	"context"
 	"runtime"
 	"sync/atomic"
 	"time"
-
-	"github.com/xxjwxc/public/myqueue"
 )
 
 // New new workpool and set the max number of concurrencies
@@ -32,7 +31,7 @@ func (p *WorkPool) SetTimeout(timeout time.Duration) { // 设置超时时间
 
 // Do Add to the workpool and return immediately
 func (p *WorkPool) Do(fn TaskHandler) { // 添加到工作池，并立即返回
-	if p.IsClosed() { // 已关闭
+	if p.IsClosed() {                   // 已关闭
 		return
 	}
 	p.waitingQueue.Push(fn)
@@ -41,7 +40,7 @@ func (p *WorkPool) Do(fn TaskHandler) { // 添加到工作池，并立即返回
 
 // DoWait Add to the workpool and wait for execution to complete before returning
 func (p *WorkPool) DoWait(task TaskHandler) { // 添加到工作池，并等待执行完成之后再返回
-	if p.IsClosed() { // closed
+	if p.IsClosed() {                         // closed
 		return
 	}
 
@@ -78,7 +77,7 @@ func (p *WorkPool) IsDone() bool { // 判断是否完成 (非阻塞)
 }
 
 // IsClosed Has it been closed?
-func (p *WorkPool) IsClosed() bool { // 是否已经关闭
+func (p *WorkPool) IsClosed() bool {      // 是否已经关闭
 	if atomic.LoadInt32(&p.closed) == 1 { // closed
 		return true
 	}
