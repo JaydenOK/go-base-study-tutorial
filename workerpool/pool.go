@@ -52,6 +52,11 @@ func (p *pool) AddWorker(fn interface{}) error {
 
 	worker := reflect.ValueOf(fn)
 
+	//1）多个读锁可以同时操作 .
+	//2）写锁一旦加锁，不管是读操作还是写操作都不能被执行。
+	//3）读锁加锁了之后，只要读锁还没有解锁，写操作是不能被执行的。
+
+	//Go 中的 map 是不支持 并发写的，我们可以利用 读写锁 RWMutex 来实现并发安全的 map。在读多写少的情况下，使用 RWMutex 要比 Mutex 性能高。
 	p.mtx.Lock()
 	defer p.mtx.Unlock()
 
