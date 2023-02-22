@@ -2,6 +2,7 @@ package workerpool
 
 import (
 	"context"
+	"fmt"
 	"sync"
 	"testing"
 	"time"
@@ -38,6 +39,7 @@ func TestExample(t *testing.T) {
 			t.Fatal("Missing expected values:", req)
 		}
 	}
+	fmt.Println("a")
 }
 
 func TestMaxWorkers(t *testing.T) {

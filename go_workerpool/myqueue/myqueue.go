@@ -1,7 +1,7 @@
 package myqueue
 
 import (
-	"github.com/xxjwxc/gowp/queue"
+	"base/go_workerpool/queue"
 	"runtime"
 	"sync"
 	"sync/atomic"

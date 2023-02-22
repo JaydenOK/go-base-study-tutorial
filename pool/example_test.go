@@ -50,6 +50,7 @@ func Example() {
 		sum += n
 	}
 
+	fmt.Println("############")
 	fmt.Println(sum)
 	// Output:
 	// 3

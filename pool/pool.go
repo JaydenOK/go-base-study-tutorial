@@ -34,7 +34,7 @@ type pool struct {
 	workers workers
 	mtx     sync.RWMutex
 }
-
+//委托
 func (p *pool) Delegate(args ...interface{}) error {
 	if len(p.workers) == 0 {
 		return fmt.Errorf("there is no workers in pool")
@@ -50,6 +50,7 @@ func (p *pool) AddWorker(fn interface{}) error {
 		return err
 	}
 
+	//反射函数
 	worker := reflect.ValueOf(fn)
 
 	//1）多个读锁可以同时操作 .
@@ -68,10 +69,12 @@ func (p *pool) AddWorker(fn interface{}) error {
 		p.workers[worker] = append(p.workers[worker], q)
 	}
 
+	//阻塞，等待队列通道p.queue投递数据
 	go func() {
 		for {
 			select {
 			case args := <-p.queue:
+				//反射后，执行函数
 				worker.Call(args)
 			case <-q:
 				return

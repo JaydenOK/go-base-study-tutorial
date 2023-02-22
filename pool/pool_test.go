@@ -19,7 +19,9 @@ func TestRemoveWorker(t *testing.T) {
 	pool := New(2)
 	defer pool.Stop()
 
-	worker := func(i int) {}
+	worker := func(i int) {
+		fmt.Println("aaaaaaaa")
+	}
 
 	for i := 1; i <= 2; i++ {
 		if err := pool.AddWorker(worker); err != nil {

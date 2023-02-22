@@ -3,9 +3,10 @@ package go_workerpool
 import (
 	"base/go_workerpool/workpool"
 	"fmt"
+	"testing"
 )
 
-func tets() {
+func TestA(t *testing.T) {
 	wp := workpool.New(5) //设置最大线程数
 	fmt.Println(wp.IsDone())
 	wp.DoWait(func() error {
@@ -37,7 +38,4 @@ func tets() {
 	fmt.Println(wp.IsDone())
 	fmt.Println(wp.IsClosed())
 	fmt.Println("down")
-}
-func main() {
-	tets()
 }
