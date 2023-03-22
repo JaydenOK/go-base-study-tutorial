@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"base_project/constants"
+	"app/constants"
 	"database/sql/driver"
 	"fmt"
 	"time"

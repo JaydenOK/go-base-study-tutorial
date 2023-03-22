@@ -8,41 +8,53 @@ import (
 
 var (
 	StatusSuccess = 1
-	StatusFail    = 2
+	StatusFail    = 9999
 )
 
 type ResponseData struct {
-	status  int
-	message string
-	data    interface{}
+	Status  int         `json:"status"`
+	Message string      `json:"message"`
+	Data    interface{} `json:"data,omitempty"`
 }
 
-func JsonResponse(resp http.ResponseWriter, httpCode, status int, message string, data interface{}) {
+//成功响应
+func SuccessResponse(w http.ResponseWriter, data interface{}) {
+	JsonResponse(w, http.StatusOK, StatusSuccess, "success", data)
+}
+
+//失败响应
+func FailResponse(w http.ResponseWriter, data interface{}) {
+	JsonResponse(w, http.StatusOK, StatusFail, "fail", data)
+}
+
+//信息响应
+func MessageResponse(w http.ResponseWriter, message string) {
+	JsonResponse(w, http.StatusOK, StatusSuccess, "success", message)
+}
+
+//重定向
+func Redirect(w http.ResponseWriter, url string) {
+	w.Header().Set("Location", url)
+	w.WriteHeader(302)
+}
+
+//http-json响应
+func JsonResponse(w http.ResponseWriter, httpCode, status int, message string, data interface{}) {
 	responseData := ResponseData{
-		status:  status,
-		message: message,
-		data:    data,
+		Status:  status,
+		Message: message,
+		Data:    data,
 	}
 	bytes, err := json.Marshal(responseData)
 	if err != nil {
-		fmt.Println("json.Marshal(user) err=", err)
+		fmt.Println("json.Marshal err=", err)
 	}
 	//响应返回客户端json数据
-	resp.WriteHeader(httpCode)
-	resp.Header().Set("Content-Type", "application/json")
-	if i, err := resp.Write(bytes); err != nil {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Token", "aaaa")
+	//WriteHeader放着Set后
+	w.WriteHeader(httpCode)
+	if i, err := w.Write(bytes); err != nil {
 		fmt.Println("JsonResponse Fail:", i)
 	}
-}
-
-func SuccessResponse(resp http.ResponseWriter, data interface{}) {
-	JsonResponse(resp, http.StatusOK, StatusSuccess, "success", data)
-}
-
-func FailResponse(resp http.ResponseWriter, data interface{}) {
-	JsonResponse(resp, http.StatusOK, StatusFail, "fail", data)
-}
-
-func MessageResponse(resp http.ResponseWriter, message string) {
-	JsonResponse(resp, http.StatusOK, StatusSuccess, "success", message)
 }
