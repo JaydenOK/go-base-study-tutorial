@@ -41,7 +41,7 @@ Windows下可以使用.msi 后缀(如go1.19.1.windows-amd64.msi)的安装包来�
 
 ### 项目模块化module设置
 ```text
-1，创建项目目录，切换到项目目录  
+1，创建项目目录，切换到项目目录  (1,2 在IDE流程: File -> New -> Project -> 配置项目名，模块等)  
 
 mkdir D:\www\goweb\mall  
 cd D:\www\goweb\mall  
