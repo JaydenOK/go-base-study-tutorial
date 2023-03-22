@@ -55,7 +55,7 @@ run -> Edit Configurations -> Working directory修改为
 4，设置goland IDE环境，开启modules(设置。setting->Go->Go Modules(vgo)->Enable Go Modules[勾上]->设置代理地址) (一定要勾选)
 然后设置Proxy代理地址为:     https://goproxy.cn,direct
 
-5，新增 main.go 文件， 设置 package main，（IDE设置编译: Edit Configuration -> Go Build -> Run kind: Package）
+5，新增 main.go 文件， 设置 package main,(项目编译入口为main) IDE设置编译: Edit Configuration -> Go Build -> Run kind: Package
 
 6，新增api目录及文件，包名package命名为当前目录名（其它目录也按此规则设置包名）
 mkdir D:\www\goweb\api
