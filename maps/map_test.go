@@ -15,7 +15,17 @@ func TestMap(t *testing.T) {
 	//m2 := JsonDecode(s)
 	//prints.PrintVar(m2)
 
+}
 
+func TestRange(t *testing.T) {
+	// for range 循环，当使用 for range 遍历 map 时，不保证每次执行程序获取的元素顺序相同。
+	personSalary2 := map[string]int{
+		"steve": 12000,
+		"jamie": 15000,
+	}
+	for key, value := range personSalary2 {
+		fmt.Printf("personSalary[%s] = %d\n", key, value)
+	}
 }
 
 func demo() {
