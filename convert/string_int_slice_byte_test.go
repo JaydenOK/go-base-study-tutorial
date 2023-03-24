@@ -3,6 +3,7 @@ package convert
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"testing"
 )
 
@@ -23,6 +24,16 @@ func ByteToString() {
 	b := StringToByte(str)
 	str2 := string(b)
 	fmt.Println(str2)
+}
+
+// 字符串转Int
+func StringToInt(str string) (int, error) {
+	return strconv.Atoi(str)
+}
+
+// 字符串转Int
+func IntToString(i int) string {
+	return strconv.Itoa(i)
 }
 
 // 类型断言 interface{}
