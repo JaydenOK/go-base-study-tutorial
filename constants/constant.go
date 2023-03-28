@@ -1,5 +1,6 @@
 package constants
 
+//const RFC3339     = "2006-01-02T15:04:05Z07:00" //系统常量
 // const TimeFormat = time.RFC3339
 const TimeFormat = "2006-01-02 15:04:05"
 const DateFormat = "2006-01-02"
